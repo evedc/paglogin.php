@@ -60,26 +60,29 @@ if(isset($_POST['nome']) && isset($_POST['email']) && isset($_POST['senha']) && 
         <div class="input-group">
             <img class="input-icon" src="img/card.png">
             <input <?php if(isset($usuario->erro["erro_nome"]) or isset($erro_geral)){ echo 'class="erro-input"';}?> class="erro-input" name="nome" type="text" placeholder="Nome Completo" required>
-            <div class="erro">Por favor informe um nome válido!</div>
+            <div class="erro"><?php if (isset($usuario->erro["erro_nome"])) echo ($usuario->erro["erro_nome"]); ?></div>
         </div>
 
         <div class="input-group">
             <img class="input-icon" src="img/user.png">
-            <input type="email" name="email" placeholder="Seu melhor email" required>
+            <input <?php if(isset($usuario->erro["erro_email"]) or isset($erro_geral)){ echo 'class="erro-input"';}?> type="email" name="email" placeholder="Seu melhor email" required>
+            <?php if (isset($usuario->erro["erro_email"])) echo ($usuario->erro["erro_email"]); ?></div>
         </div>
 
         <div class="input-group">
             <img class="input-icon" src="img/lock.png">
-            <input type="password" name="senha" placeholder="Senha mínimo 6 Dígitos" required>
+            <input <?php if(isset($usuario->erro["erro_senha"]) or isset($erro_geral)){ echo 'class="erro-input"';}?> type="password" name="senha" placeholder="Senha mínimo 6 Dígitos" required>
+            <?php if (isset($usuario->erro["erro_senha"])) echo ($usuario->erro["erro_senha"]); ?></div>
         </div>
 
         <div class="input-group">
             <img class="input-icon" src="img/lock-open.png">
-            <input type="password" name="repete_senha" placeholder="Repita a senha criada">
+            <input <?php if(isset($usuario->erro_repete["erro_repete"]) or isset($erro_geral)){ echo 'class="erro-input"';}?> type="password" name="repete_senha" placeholder="Repita a senha criada">
+            <?php if (isset($usuario->erro["erro_repete"])) echo ($usuario->erro["erro_repete"]); ?></div>
         </div>   
         
-        <div class="input-group">
-            <input type="checkbox" id="termos" name="termos" value="ok">
+        <div <?php if(isset($erro_geral) && erro_geral=="Todos os campos são obrigatórios!") {echo 'class="input-group erro-input"';}
+ else{echo 'class="input-group"'}?> > <input type="checkbox" id="termos" name="termos" value="ok">
             <label for="termos">Ao se cadastrar você concorda com a nossa <a class="link" href="#">Política de Privacidade</a> e os <a class="link" href="#">Termos de uso</a></label>
         </div>  
        
