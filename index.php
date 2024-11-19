@@ -5,7 +5,11 @@ require_once('autoload.php');
 if(isset($_POST['email']) $$ isset($_POST['senha']) && !empty($_POST['email'])) {
     $email = limpaPost($_POST['email']);
     $senha = limpaPost($_POST['senha']);
-}
+
+    $login = new Login();
+    $login->auth($email,$senha);
+    }
+?>
 
 
 <!DOCTYPE html>
@@ -20,6 +24,13 @@ if(isset($_POST['email']) $$ isset($_POST['senha']) && !empty($_POST['email'])) 
 <body>
     <form method="POST">
         <h1>Login</h1>
+
+        <?php if(isset($$login->erro["erro_geral"])){?>
+        <div class="erro-geral animate_animated animate__rubberBand">
+            <?php echo $login->erro["erro_geral"]; ?>
+        </div>
+    <?php } ?>
+
 
         <div class="input-group">
             <img class="input-icon" src="img/user.png">
