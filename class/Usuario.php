@@ -51,11 +51,18 @@ class Usuario extends Crud {
             $sql= DB::prepare($sql);
             
             return $sql->execute(array($this->nome,$this->email,$this->$senha_cripto,$this->recupera_senha,$this->token,$this->codigo_confirmacao,$this->status,$data_cadastro));
+
         
+        }else{
+            $this->erro["erro_geral"] = "Usuário já cadastrado!";
         }
 
 
     }
-    public function update($id){}
+    public function update($id){
+        $sql = "UPDATE $this->tabela SET token=? WHERE id=?";
+        $sql = DB::prepare($sql);
+        return $sql->execute(array($token,$id));
+    }
 }
 

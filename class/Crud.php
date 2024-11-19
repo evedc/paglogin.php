@@ -1,7 +1,7 @@
 <?php
 requite_oce('DB.php');
 
-class Crud extends DB {
+ abstract class Crud extends DB {
     protected string $tabela;
 
     abstract public function insert();
