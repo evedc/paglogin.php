@@ -2,7 +2,7 @@
 
 function autoload($nomeClasse){
     $arquivo = __DIR__.'/class/'.$nomeClasse.'.php';
-    if(is_file($pasta)){
+    if(is_file($arquivo)){
         require_once($arquivo);
     }
 }
