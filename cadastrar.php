@@ -59,25 +59,25 @@ if(isset($_POST['nome']) && isset($_POST['email']) && isset($_POST['senha']) && 
 
         <div class="input-group">
             <img class="input-icon" src="img/card.png">
-            <input <?php if(isset($usuario->erro["erro_nome"]) or isset($erro_geral)){ echo 'class="erro-input"';}?> class="erro-input" name="nome" type="text" placeholder="Nome Completo" required>
+            <input <?php if(isset($usuario->erro["erro_nome"]) or isset($erro_geral)){ echo 'class="erro-input"';}?> class="erro-input" name="nome" type="text" <?php if(isset($_POST['nome'])){echo 'value="'.$POST['nome'].'"';}?> placeholder="Nome Completo" required>
             <div class="erro"><?php if (isset($usuario->erro["erro_nome"])) echo ($usuario->erro["erro_nome"]); ?></div>
         </div>
 
         <div class="input-group">
             <img class="input-icon" src="img/user.png">
-            <input <?php if(isset($usuario->erro["erro_email"]) or isset($erro_geral)){ echo 'class="erro-input"';}?> type="email" name="email" placeholder="Seu melhor email" required>
+            <input <?php if(isset($usuario->erro["erro_email"]) or isset($erro_geral)){ echo 'class="erro-input"';}?> type="email" name="email" <?php if(isset($_POST['email'])){echo 'value="'.$POST['email'].'"';}?> placeholder="Seu melhor email" required>
             <?php if (isset($usuario->erro["erro_email"])) echo ($usuario->erro["erro_email"]); ?></div>
         </div>
 
         <div class="input-group">
             <img class="input-icon" src="img/lock.png">
-            <input <?php if(isset($usuario->erro["erro_senha"]) or isset($erro_geral)){ echo 'class="erro-input"';}?> type="password" name="senha" placeholder="Senha mínimo 6 Dígitos" required>
+            <input <?php if(isset($usuario->erro["erro_senha"]) or isset($erro_geral)){ echo 'class="erro-input"';}?> type="password" name="senha" <?php if(isset($_POST['senha'])){echo 'value="'.$POST['senha'].'"';}?> placeholder="Senha mínimo 6 Dígitos" required>
             <?php if (isset($usuario->erro["erro_senha"])) echo ($usuario->erro["erro_senha"]); ?></div>
         </div>
 
         <div class="input-group">
             <img class="input-icon" src="img/lock-open.png">
-            <input <?php if(isset($usuario->erro_repete["erro_repete"]) or isset($erro_geral)){ echo 'class="erro-input"';}?> type="password" name="repete_senha" placeholder="Repita a senha criada">
+            <input <?php if(isset($usuario->erro_repete["erro_repete"]) or isset($erro_geral)){ echo 'class="erro-input"';}?> type="password" name="repete_senha" <?php if(isset($_POST['repete_senha'])){echo 'value="'.$POST['repete_senha'].'"';}?> placeholder="Repita a senha criada">
             <?php if (isset($usuario->erro["erro_repete"])) echo ($usuario->erro["erro_repete"]); ?></div>
         </div>   
         
