@@ -35,4 +35,17 @@ class Login {
         }
     }
 
+    public function isAuth($token) {
+        $sql = "SELECT * FROM $this->tabela WHERE token=? LIMIT 1";
+        $sql = DB::prepare($sql);
+        $sql->execute(array($token));
+        $usuario = $sql->fetch(PDO::FETCH_ASSOC);
+        if($usuario){
+            $this->nome = $usuario["nome"];
+            $this->email = $usuario["email"];
+        }else {
+            header('location: ../index.php');
+        }
+    }
+
 }
