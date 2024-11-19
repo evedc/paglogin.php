@@ -25,8 +25,6 @@ if(isset($_POST['nome']) && isset($_POST['email']) && isset($_POST['senha']) && 
 
         }
 
-
-
     }
 
 }
@@ -61,7 +59,7 @@ if(isset($_POST['nome']) && isset($_POST['email']) && isset($_POST['senha']) && 
 
         <div class="input-group">
             <img class="input-icon" src="img/card.png">
-            <input class="erro-input" name="nome" type="text" placeholder="Nome Completo" required>
+            <input <?php if(isset($usuario->erro["erro_nome"]) or isset($erro_geral)){ echo 'class="erro-input"';}?> class="erro-input" name="nome" type="text" placeholder="Nome Completo" required>
             <div class="erro">Por favor informe um nome válido!</div>
         </div>
 
