@@ -43,7 +43,7 @@ if(isset($_POST['email']) && isset($_POST['senha']) && !empty($_POST['email'])) 
         </div>
        
         <button class="btn-blue" type="submit">Fazer Login</button>
-        <a href="cadastrar.html">Ainda não tenho cadastro</a>
+        <a href="cadastrar.php">Ainda não tenho cadastro</a>
     </form>
 </body>
 </html>
