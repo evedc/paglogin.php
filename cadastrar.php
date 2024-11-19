@@ -12,7 +12,12 @@ if(isset($_POST['nome']) && isset($_POST['email']) && isset($_POST['senha']) && 
     if(empty($nome) or empty($email) or empty($senha) or empty($repete_senha) or empty($_POST['termos'])) {
         $erro_geral = "Todos os campos são obrigatórios!";
     } else {
-        $usuario = new Usuario($nome, $email, $senha)
+        $usuario = new Usuario($nome, $email, $senha);
+        $usuario->set_repeticao($repete_senha);
+        $usuario->validar_cadastro();
+
+
+
     }
 
 }
