@@ -16,6 +16,15 @@ if(isset($_POST['nome']) && isset($_POST['email']) && isset($_POST['senha']) && 
         $usuario->set_repeticao($repete_senha);
         $usuario->validar_cadastro();
 
+        if(empty($usuario->erro)){
+            if($usuario->insert()){
+                header('location: index.php');
+            }else{
+                $erro_geral = $usuario->erro["erro_geral"];
+            }
+
+        }
+
 
 
     }

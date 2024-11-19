@@ -39,7 +39,23 @@ class Usuario extends Crud {
        $this->erro["erri_repete"] = "Senha e repetição de senha diferentes!"; 
     }
 
-    public function insert(){}
+    public function insert(){
+        $sql = "SELECT * FROM usuarios WHERE email=? LIMITE 1";
+        $sql = DB::prepare($sql);
+        $sql->execute(array($this->email));
+        $usuario = $sql->fetch();
+        if (!$usuario) {
+            $data_cadastro = date('d/m/Y');
+            $senha_cripto = sha1($this->senha);
+            $sql = "INSERT INTO $this->tabela VALUES (null, ?,?,?,?,?,?,?,?)";
+            $sql= DB::prepare($sql);
+            
+            return $sql->execute(array($this->nome,$this->email,$this->$senha_cripto,$this->recupera_senha,$this->token,$this->codigo_confirmacao,$this->status,$data_cadastro));
+        
+        }
+
+
+    }
     public function update($id){}
 }
 
