@@ -1,6 +1,20 @@
 <?php
 require_once('class/config.php');
 require_once('autoload.php');
+
+if(isset($_POST['nome']) && isset($_POST['email']) && isset($_POST['senha']) && isset($_POST['repete_senha'])){
+   
+    $nome = limpaPost($_POST['nome']);
+    $email = limpaPost($_POST['email']);
+    $senha = limpaPost($_POST['senha']);
+    $repete_senha = limpaPost($_POST['repete_senha']);
+
+    if(empty($nome) or empty($email) or empty($senha) or empty($repete_senha) or empty($_POST['termos'])) {
+        $erro_geral = "Todos os campos são obrigatórios!";
+    } 
+
+}
+
 ?>
 
 
@@ -16,14 +30,18 @@ require_once('autoload.php');
     href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
   />
     <title>Cadastrar</title>
+   
 </head>
 <body>
     <form method="POST">
         <h1>Cadastrar</h1>
-         
-        <div class="erro-geral animate__animated animate__rubberBand">
-            Aqui vai o erro para o usuário
+        <?php if(isset($erro_geral)){?>
+            <div class="erro-geral animate__animated animate__rubberBand">
+           <?php echo $erro_geral; ?>
         </div>
+        <?php  } ?>
+
+     
 
         <div class="input-group">
             <img class="input-icon" src="img/card.png">
