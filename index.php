@@ -1,3 +1,13 @@
+<?php
+require_once('class/config.php');
+require_once('autoload.php');
+
+if(isset($_POST['email']) $$ isset($_POST['senha']) && !empty($_POST['email'])) {
+    $email = limpaPost($_POST['email']);
+    $senha = limpaPost($_POST['senha']);
+}
+
+
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -8,17 +18,17 @@
     <title>Login</title>
 </head>
 <body>
-    <form>
+    <form method="POST">
         <h1>Login</h1>
 
         <div class="input-group">
             <img class="input-icon" src="img/user.png">
-            <input type="email" placeholder="Digite seu email">
+            <input type="email" name="email" placeholder="Digite seu email">
         </div>
         
         <div class="input-group">
             <img class="input-icon" src="img/lock.png">
-            <input type="password" placeholder="Digite sua senha">
+            <input type="password" name="senha" placeholder="Digite sua senha">
         </div>
        
         <button class="btn-blue" type="submit">Fazer Login</button>
