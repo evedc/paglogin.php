@@ -82,7 +82,7 @@ if(isset($_POST['nome']) && isset($_POST['email']) && isset($_POST['senha']) && 
         </div>   
         
         <div <?php if(isset($erro_geral) && erro_geral=="Todos os campos são obrigatórios!") {echo 'class="input-group erro-input"';}
- else{echo 'class="input-group"'}?> > <input type="checkbox" id="termos" name="termos" value="ok">
+ else{echo 'class="input-group"';}?> > <input type="checkbox" id="termos" name="termos" value="ok">
             <label for="termos">Ao se cadastrar você concorda com a nossa <a class="link" href="#">Política de Privacidade</a> e os <a class="link" href="#">Termos de uso</a></label>
         </div>  
        
