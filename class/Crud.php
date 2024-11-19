@@ -15,4 +15,19 @@ class Crud extends DB {
 
         return $valor
     }
+
+    public function findAll() {
+        $sql = "SELECT * FROM $this->tabela WHERE id=?";
+        $sql = DB::prepare($sql);
+        $sql->execute(array($id));
+        $valor = $sql->fetchAll();
+
+        return $valor
+    }
+
+    public function delete($id){
+        $sql = "DELETE * FROM $this->tabela WHERE id=?";
+        $sql = DB::prepare($sql);
+        return $sql ->execute(array($id));
+    }
 }
